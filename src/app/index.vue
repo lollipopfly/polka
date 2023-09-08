@@ -1,21 +1,17 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import { Header } from '@/widgets/header/index'
+import { Footer } from '@/shared/ui/footer/index'
 </script>
 
 <template>
   <v-layout class="rounded rounded-md" ref="app" style="height: 100vh">
-    <v-app-bar title="Polka"></v-app-bar>
+    <Header />
 
     <v-main class="d-flex align-center justify-center" fill-height>
       <RouterView />
     </v-main>
 
-    <v-footer :app="true" border>
-      <v-row justify="center" no-gutters>
-        <v-col class="text-center" cols="12">
-          {{ new Date().getFullYear() }} — <strong>Polka</strong>
-        </v-col>
-      </v-row>
-    </v-footer>
+    <Footer />
   </v-layout>
 </template>
