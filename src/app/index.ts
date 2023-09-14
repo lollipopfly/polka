@@ -5,11 +5,14 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
-import App from './index.vue'
+import App from './App.vue'
 
 import { router } from './providers'
 
 const vuetify = createVuetify({
+  theme: {
+    defaultTheme: localStorage.getItem('theme') || 'light'
+  },
   components,
   directives,
   icons: {
