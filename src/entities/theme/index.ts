@@ -1,0 +1,1 @@
+export { toggleTheme } from './lib'
