@@ -1,22 +1,14 @@
 <template>
-  <v-layout class="rounded rounded-md" ref="app" style="height: 100vh">
-    <Header />
-
-    <Navigation />
-
-    <v-main class="d-flex align-center justify-center" fill-height>
-      <RouterView />
-    </v-main>
-
-    <Footer />
-  </v-layout>
+  <component :is="layout"> <router-view /> </component>
 </template>
 
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
-import { Header } from '@/widgets/header'
-import { Navigation } from '@/shared/ui/navigation'
-import { Footer } from '@/shared/ui/footer'
+import { useRoute } from 'vue-router'
+import { DefaultLayout } from '@/shared/ui/default-layout/'
+
+const route = useRoute()
+
+const layout = computed(() => route.meta.layout || DefaultLayout)
 </script>
 
 <style>
