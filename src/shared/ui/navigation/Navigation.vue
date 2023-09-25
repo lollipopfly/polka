@@ -10,12 +10,9 @@
     <v-divider></v-divider>
 
     <v-list density="compact" nav>
-      <v-list-item prepend-icon="mdi-star" title="Избранное" value="favorites"></v-list-item>
-      <v-list-item
-        prepend-icon="mdi-check-decagram"
-        title="Прочитано"
-        value="favorites"
-      ></v-list-item>
+      <v-list-item link to="/" prepend-icon="mdi-home" title="Главная"></v-list-item>
+      <v-list-item link to="/favorites" prepend-icon="mdi-star" title="Избранное"></v-list-item>
+      <v-list-item prepend-icon="mdi-check-decagram" title="Прочитано"></v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
