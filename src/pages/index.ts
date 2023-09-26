@@ -12,6 +12,10 @@ export const routes = [
   {
     path: '/favorites',
     component: () => import('./favorites')
+  },
+  {
+    path: '/book',
+    component: () => import('./book')
   }
 ]
 
