@@ -1,5 +1,5 @@
 import Routing from './index.vue'
-import { HomeLayout } from '@/shared/ui/home-layout/'
+import { HomeLayout } from '@/widgets/home-layout/'
 
 export const routes = [
   {
