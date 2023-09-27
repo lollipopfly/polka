@@ -1,10 +1,10 @@
 <template>
-  <v-layout class="rounded rounded-md" ref="app" style="height: 100vh">
+  <v-layout class="rounded rounded-md" ref="app">
     <Header />
 
-    <Navigation />
+    <Navigation :show="themeStore.isShowNav" />
 
-    <v-main class="d-flex align-center justify-center" fill-height>
+    <v-main>
       <slot />
     </v-main>
 
@@ -14,6 +14,9 @@
 
 <script setup lang="ts">
 import { Header } from '@/widgets/header'
+import { useThemeStore } from '@/entities/theme'
 import { Navigation } from '@/shared/ui/navigation'
 import { Footer } from '@/shared/ui/footer'
+
+const themeStore = useThemeStore()
 </script>

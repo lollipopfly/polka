@@ -2,14 +2,14 @@
   <v-btn
     v-if="currentTheme === 'light'"
     icon="mdi-white-balance-sunny"
-    @click="toggleTheme(myTheme, 'dark')"
+    @click="themeLib.toggleTheme(myTheme, 'dark')"
   />
-  <v-btn icon="mdi-moon-waxing-crescent" v-else @click="toggleTheme(myTheme, 'light')" />
+  <v-btn icon="mdi-moon-waxing-crescent" v-else @click="themeLib.toggleTheme(myTheme, 'light')" />
 </template>
 
 <script setup lang="ts">
 import { useTheme } from 'vuetify'
-import { toggleTheme } from '@/entities/theme/'
+import { themeLib } from '@/entities/theme/'
 
 const myTheme = useTheme()
 

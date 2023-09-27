@@ -1,1 +1,2 @@
-export { toggleTheme } from './lib'
+export { useThemeStore } from './model'
+export * as themeLib from './lib'
