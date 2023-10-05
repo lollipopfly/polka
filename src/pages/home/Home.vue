@@ -8,4 +8,16 @@
   </v-container>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useBookStore } from '@/entities/book'
+
+const bookStore = useBookStore()
+
+const getBooks = async () => {
+  await bookStore.fetchBooks()
+}
+
+onMounted(async () => {
+  await getBooks()
+})
+</script>
