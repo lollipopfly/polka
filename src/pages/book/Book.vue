@@ -1,37 +1,42 @@
 <template>
-  <v-container>
-    <v-row>
-      <h1>Война и мир</h1>
-    </v-row>
-
-    <v-row>
-      <v-col md="5">
-        <img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" />
-      </v-col>
-      <v-col>
-        <h2>Лев Николаевич Толстой</h2>
-        <p>
-          Война и мир» считается одним из самых значительных произведений мировой классической
-          литературы, а также крупнейшим литературным достижением Толстого, наряду с его другим
-          романом «Анна Каренина». Толстой писал роман на протяжении 6 лет, с 1863 по 1869 годы. По
-          историческим сведениям он вручную переписал его примерно 7 раз, а отдельные эпизоды —
-          более 26 раз. Русский критик Н. Н. Страхов писал: “В таких великих произведениях, как
-          «Война и мир», всего яснее открывается истинная сущность и важность искусства. Поэтому
-          «Война и мир» есть превосходный пробный камень всякого критического и эстетического
-          понимания, а вместе с тем и камень преткновения для всякой глупости и всякого нахальства.
-          Легко понять, что не «Войну и мир» будут ценить по вашим словам и мнениям, а вас будут...
-        </p>
-
-        <br />
-        <v-row>
-          <v-col cols="auto">
-            <v-btn color="orange">В избранное</v-btn>
-          </v-col>
-          <v-col cols="auto">
-            <v-btn>Прочитать</v-btn>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
-  </v-container>
+  <BookDetails v-if="isShowBookDetails" :data="bookStore.book" />
+  <div v-if="isShowNoBookMessage" class="text-center mt-10">Книга не найдена</div>
 </template>
+
+<script setup lang="ts">
+import { useRoute } from 'vue-router'
+import { books_v1 } from '@googleapis/books/v1'
+import { BookDetails } from '@/widgets/book-details/'
+import { useBookStore } from '@/entities/book'
+
+const route = useRoute()
+const bookStore = useBookStore()
+
+const isShowNoBookMessage = ref(false)
+
+onMounted(() => {
+  getBook()
+})
+
+onBeforeUnmount(() => {
+  bookStore.$reset()
+})
+
+// COMPUTED
+const isShowBookDetails = computed(
+  (): boolean => Object.keys(bookStore.book as books_v1.Schema$Volume).length > 0
+)
+
+// METHODS
+const getBook = async () => {
+  const { id } = route.params
+
+  if (typeof id === 'string') {
+    const { error } = await bookStore.fetchBookById(id)
+
+    if (error) {
+      isShowNoBookMessage.value = true
+    }
+  }
+}
+</script>

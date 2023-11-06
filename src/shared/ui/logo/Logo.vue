@@ -1,10 +1,10 @@
 <template>
-  <div :class="styles.logo">
-    <v-icon icon="mdi-bookshelf" size="large" :class="styles.icon"></v-icon>
+  <div :class="css.logo">
+    <v-icon icon="mdi-bookshelf" size="large" :class="css.icon"></v-icon>
     <h2>Polka</h2>
   </div>
 </template>
 
 <script setup lang="ts">
-import styles from './styles.module.css'
+import css from './css.module.css'
 </script>
