@@ -14,7 +14,8 @@ export const routes = [
     component: () => import('./favorites')
   },
   {
-    path: '/book',
+    path: '/book/:id',
+    name: 'Book',
     component: () => import('./book')
   }
 ]
