@@ -6,10 +6,9 @@
     label="Поиск книги"
     variant="outlined"
     no-filter
-    @update:search="handleInputChange"
+    @input="handleInputChange"
     @update:modelValue="handleOptionChoose"
   ></v-autocomplete>
-  {{ query }}
 </template>
 
 <script setup lang="ts">
@@ -31,7 +30,7 @@ const query = ref('')
 // COMPUTED
 const items = computed(
   (): AutocompleteOption[] =>
-    bookStore.books?.map((item: books_v1.Schema$Volume) => ({
+    bookStore.queryBooks?.map((item: books_v1.Schema$Volume) => ({
       title: `${item.volumeInfo?.title} ${item.volumeInfo?.subtitle || ''}`,
       value: String(item.id)
     }))

@@ -9,5 +9,12 @@
 </template>
 
 <script setup lang="ts">
+import { useBookStore } from '@/entities/book'
 import { BookSearch } from '@/features/book-search'
+
+const bookStore = useBookStore()
+
+onBeforeUnmount(() => {
+  bookStore.$reset()
+})
 </script>

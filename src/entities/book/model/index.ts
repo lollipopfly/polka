@@ -3,7 +3,7 @@ import { books_v1 } from '@googleapis/books/v1'
 import { BookApi } from '../index'
 
 interface IBookStore {
-  books: books_v1.Schema$Volume[]
+  queryBooks: books_v1.Schema$Volume[]
   book: books_v1.Schema$Volume | null
 }
 
@@ -12,7 +12,7 @@ export const useBookStore = defineStore({
 
   state: () =>
     <IBookStore>{
-      books: [],
+      queryBooks: [],
       book: {}
     },
 
@@ -20,7 +20,7 @@ export const useBookStore = defineStore({
     async fetchBooks(payload: string): Promise<void> {
       const { items } = await BookApi.fetchBooks(payload)
 
-      this.updateBooks(items)
+      this.updateQueryBooks(items)
     },
 
     async fetchBookById(id: string): Promise<any> {
@@ -35,8 +35,8 @@ export const useBookStore = defineStore({
       }
     },
 
-    updateBooks(payload: books_v1.Schema$Volume[]): void {
-      this.books = payload
+    updateQueryBooks(payload: books_v1.Schema$Volume[]): void {
+      this.queryBooks = payload || []
     },
 
     updateBook(payload: books_v1.Schema$Volume): void {
