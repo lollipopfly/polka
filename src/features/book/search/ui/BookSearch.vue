@@ -37,10 +37,12 @@ const items = computed(
 )
 
 // METHODS
-const handleInputChange = (query: string) => {
+const handleInputChange = (event: Event) => {
   debounce(async function () {
-    if (query) {
-      await bookStore.fetchBooks(query)
+    const { value } = event.target as HTMLTextAreaElement
+
+    if (value) {
+      await bookStore.fetchBooks(value)
     }
   }, 100)
 }

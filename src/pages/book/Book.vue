@@ -1,5 +1,5 @@
 <template>
-  <BookDetails v-if="isShowBookDetails" :data="bookStore.book" />
+  <BookDetails v-if="isShowBookDetails" :book="bookStore.book" />
   <div v-if="isShowNoBookMessage" class="text-center mt-10">Книга не найдена</div>
 </template>
 

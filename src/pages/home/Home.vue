@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { useBookStore } from '@/entities/book'
-import { BookSearch } from '@/features/book-search'
+import { BookSearch } from '@/features/book'
 
 const bookStore = useBookStore()
 

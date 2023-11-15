@@ -3,3 +3,4 @@ import * as BookApi from './api'
 import { useBookStore } from './model'
 
 export { BookApi, useBookStore, BookCard }
+export { type IBook } from './model/types'
