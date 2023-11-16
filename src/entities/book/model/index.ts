@@ -1,6 +1,11 @@
 import { defineStore } from 'pinia'
 import { books_v1 } from '@googleapis/books/v1'
-import { BookApi } from '../index'
+import {
+  BookApi,
+  toggleItemInLocalStorage,
+  favoritesStorageName,
+  bookshelfStorageName
+} from '../index'
 import type { IBookStore, IBook } from './types'
 
 export const useBookStore = defineStore({
@@ -10,12 +15,19 @@ export const useBookStore = defineStore({
     <IBookStore>{
       queryBooks: [],
       book: {},
-      favorites: JSON.parse(localStorage.getItem('book-favorites') || '[]')
+      favorites: JSON.parse(localStorage.getItem('book-favorites') || '[]'),
+      bookshelf: JSON.parse(localStorage.getItem('book-bookshelf') || '[]')
     },
 
   getters: {
     isBookInFavorites() {
-      return (id: string | undefined | null) => this.favorites.some((item: IBook) => item.id === id)
+      return (id: string | undefined | null): boolean =>
+        this.favorites.some((item: IBook) => item.id === id)
+    },
+
+    isBookInBookshelf() {
+      return (id: string | undefined | null): boolean =>
+        this.bookshelf.some((item: IBook) => item.id === id)
     }
   },
 
@@ -39,18 +51,15 @@ export const useBookStore = defineStore({
     },
 
     toggleFavoriteBook(book: IBook): void {
-      const favorites = localStorage.getItem('book-favorites')
-      const favoriteList = JSON.parse(favorites || '[]')
-      const idIndex = favoriteList.findIndex((item: IBook) => item.id === book.id)
+      const favoriteList = toggleItemInLocalStorage(favoritesStorageName, book)
 
-      if (favoriteList.length > 0 && idIndex !== -1) {
-        favoriteList.splice(idIndex, idIndex + 1)
-      } else {
-        favoriteList.push(book)
-      }
-
-      localStorage.setItem('book-favorites', JSON.stringify(favoriteList))
       this.updateFavorites(favoriteList)
+    },
+
+    toggleBookshelfBook(book: IBook): void {
+      const bookShelfList = toggleItemInLocalStorage(bookshelfStorageName, book)
+
+      this.updateBookShelf(bookShelfList)
     },
 
     updateQueryBooks(payload: books_v1.Schema$Volume[]): void {
@@ -72,6 +81,10 @@ export const useBookStore = defineStore({
 
     updateFavorites(payload: IBook[]): void {
       this.favorites = [...payload]
+    },
+
+    updateBookShelf(payload: IBook[]): void {
+      this.bookshelf = [...payload]
     }
   }
 })

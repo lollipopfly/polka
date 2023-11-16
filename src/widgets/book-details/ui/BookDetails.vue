@@ -21,11 +21,10 @@
 
             <v-row>
               <v-col cols="auto">
-                <!-- TODO: v-if -->
-                <ToggleFavoriteBook v-if="book?.id" :book="book" />
+                <ToggleFavoriteBook v-if="isShowBtn" :book="book" />
               </v-col>
               <v-col cols="auto">
-                <v-btn>Прочитать</v-btn>
+                <ToggleReadBook v-if="isShowBtn" :book="book" />
               </v-col>
             </v-row>
           </v-col>
@@ -37,6 +36,7 @@
 
 <script setup lang="ts">
 import { ToggleFavoriteBook } from '@/features/book'
+import { ToggleReadBook } from '@/features/book'
 import css from './css.module.css'
 import type { IBook } from '@/entities/book'
 
@@ -48,4 +48,6 @@ const props = defineProps<{
 const image = computed((): string | undefined => props.book.image)
 
 const author = computed((): string => (props.book?.authors ? props.book?.authors?.join(',') : ''))
+
+const isShowBtn = computed((): boolean => Object.keys(props.book).length > 0)
 </script>
