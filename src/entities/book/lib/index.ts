@@ -15,3 +15,6 @@ export const toggleItemInLocalStorage = (name: string, entity: IBook): IBook[] =
 
   return list
 }
+
+export const getAuthors = (authors: string[] | undefined): string =>
+  authors ? authors?.join(', ') : ''

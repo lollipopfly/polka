@@ -15,7 +15,7 @@
           </v-col>
           <v-col>
             <div class="book-details__info">
-              <h3>{{ author }}</h3>
+              <h3>{{ getAuthors(book.authors) }}</h3>
               <div v-html="book.description"></div>
             </div>
 
@@ -38,7 +38,7 @@
 import { ToggleFavoriteBook } from '@/features/book'
 import { ToggleReadBook } from '@/features/book'
 import css from './css.module.css'
-import type { IBook } from '@/entities/book'
+import { type IBook, getAuthors } from '@/entities/book'
 
 const props = defineProps<{
   book: IBook
@@ -46,8 +46,6 @@ const props = defineProps<{
 
 // COMPUTED
 const image = computed((): string | undefined => props.book.image)
-
-const author = computed((): string => (props.book?.authors ? props.book?.authors?.join(',') : ''))
 
 const isShowBtn = computed((): boolean => Object.keys(props.book).length > 0)
 </script>
