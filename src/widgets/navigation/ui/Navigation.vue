@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="isShowNav" location="left">
+  <v-navigation-drawer v-model="themeStore.isShowNav" location="left" temporary>
     <v-list>
       <v-list-item
         v-for="({ icon, title, to }, index) in items"
@@ -14,12 +14,9 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
-  show: boolean
-}>()
-const { show } = toRefs(props)
+import { useThemeStore } from '@/entities/theme'
 
-const isShowNav = ref(show)
+const themeStore = useThemeStore()
 
 const items = reactive([
   {

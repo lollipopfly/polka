@@ -1,8 +1,8 @@
 import BookCard from './ui/book-card/BookCard.vue'
-import * as BookApi from './api'
-import { useBookStore } from './model'
 
+export * as BookApi from './api'
 export * from './config'
 export { toggleItemInLocalStorage } from './lib'
-export { BookApi, useBookStore, BookCard }
+export { useBookStore } from './model'
+export { BookCard }
 export { type IBook } from './model/types'
