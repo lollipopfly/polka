@@ -2,7 +2,7 @@
   <v-layout class="rounded rounded-md" ref="app">
     <Header />
 
-    <Navigation :show="themeStore.isShowNav" />
+    <Navigation />
 
     <v-main>
       <slot />
@@ -14,9 +14,6 @@
 
 <script setup lang="ts">
 import { Header } from '@/widgets/header'
-import { useThemeStore } from '@/entities/theme'
-import { Navigation } from '@/shared/ui/navigation'
+import { Navigation } from '@/widgets/navigation'
 import { Footer } from '@/shared/ui/footer'
-
-const themeStore = useThemeStore()
 </script>
