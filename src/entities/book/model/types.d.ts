@@ -1,4 +1,4 @@
-export interface IBookStore {
+export interface IBookModel {
   queryBooks: books_v1.Schema$Volume[]
   book: IBook
   favorites: IBook[]

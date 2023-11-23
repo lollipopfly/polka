@@ -1,2 +1,2 @@
-export { useThemeStore } from './model'
+export { useThemeModel } from './model'
 export * as themeLib from './lib'

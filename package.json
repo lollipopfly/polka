@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@googleapis/books": "^1.0.0",
+    "@unhead/vue": "^1.8.4",
     "axios": "^1.5.1",
     "pinia": "^2.1.6",
     "vue": "^3.3.4",

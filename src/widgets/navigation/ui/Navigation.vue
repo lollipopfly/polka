@@ -1,22 +1,23 @@
 <template>
-  <v-navigation-drawer v-model="themeStore.isShowNav" location="left" temporary>
+  <v-navigation-drawer v-model="themeModel.isShowNav" location="left" temporary>
     <v-list>
       <v-list-item
         v-for="({ icon, title, to }, index) in items"
         :key="index"
         :to="to"
         :title="title"
-        link
         :prepend-icon="'mdi-' + icon"
+        link
+        @click="themeModel.toggleIsShowNav()"
       ></v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script lang="ts" setup>
-import { useThemeStore } from '@/entities/theme'
+import { useThemeModel } from '@/entities/theme'
 
-const themeStore = useThemeStore()
+const themeModel = useThemeModel()
 
 const items = reactive([
   {
@@ -31,7 +32,7 @@ const items = reactive([
   },
   {
     title: 'Прочитано',
-    to: '/favorites',
+    to: '/bookshelf',
     icon: 'check-decagram'
   }
 ])

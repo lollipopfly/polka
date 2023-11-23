@@ -1,5 +1,5 @@
 <template>
-  <BookDetails v-if="isShowBookDetails" :book="bookStore.book" />
+  <BookDetails v-if="isShowBookDetails" :book="bookModel.book" />
   <div v-if="isShowNoBookMessage" class="text-center mt-10">Книга не найдена</div>
 </template>
 
@@ -7,10 +7,10 @@
 import { useRoute } from 'vue-router'
 import { books_v1 } from '@googleapis/books/v1'
 import { BookDetails } from '@/widgets/book-details/'
-import { useBookStore } from '@/entities/book'
+import { useBookModel } from '@/entities/book'
 
 const route = useRoute()
-const bookStore = useBookStore()
+const bookModel = useBookModel()
 
 const isShowNoBookMessage = ref(false)
 
@@ -19,12 +19,12 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  bookStore.$reset()
+  bookModel.$reset()
 })
 
 // COMPUTED
 const isShowBookDetails = computed(
-  (): boolean => Object.keys(bookStore.book as books_v1.Schema$Volume).length > 0
+  (): boolean => Object.keys(bookModel.book as books_v1.Schema$Volume).length > 0
 )
 
 // METHODS
@@ -32,7 +32,7 @@ const getBook = async () => {
   const { id } = route.params
 
   if (typeof id === 'string') {
-    const { error } = await bookStore.fetchBookById(id)
+    const { error } = await bookModel.fetchBookById(id)
 
     if (error) {
       isShowNoBookMessage.value = true

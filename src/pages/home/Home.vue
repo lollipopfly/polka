@@ -9,12 +9,17 @@
 </template>
 
 <script setup lang="ts">
-import { useBookStore } from '@/entities/book'
+import { useHead } from '@unhead/vue'
+import { useBookModel } from '@/entities/book'
 import { BookSearch } from '@/features/book'
 
-const bookStore = useBookStore()
+useHead({
+  title: 'Polka - Поиск книги'
+})
+
+const bookModel = useBookModel()
 
 onBeforeUnmount(() => {
-  bookStore.$reset()
+  bookModel.$reset()
 })
 </script>

@@ -1,14 +1,14 @@
 import { defineStore } from 'pinia'
 
-interface ICommonState {
+interface ICommonModel {
   isShowNav: boolean
 }
 
-export const useThemeStore = defineStore({
+export const useThemeModel = defineStore({
   id: 'theme',
 
   state: () =>
-    <ICommonState>{
+    <ICommonModel>{
       isShowNav: false
     },
 

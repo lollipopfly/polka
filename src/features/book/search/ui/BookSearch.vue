@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { useBookStore } from '@/entities/book'
+import { useBookModel } from '@/entities/book'
 import { debounce } from '@/shared/lib/request'
 import { books_v1 } from '@googleapis/books/v1'
 
@@ -23,14 +23,14 @@ interface AutocompleteOption {
 }
 
 const router = useRouter()
-const bookStore = useBookStore()
+const bookModel = useBookModel()
 
 const query = ref('')
 
 // COMPUTED
 const items = computed(
   (): AutocompleteOption[] =>
-    bookStore.queryBooks?.map((item: books_v1.Schema$Volume) => ({
+    bookModel.queryBooks?.map((item: books_v1.Schema$Volume) => ({
       title: `${item.volumeInfo?.title} ${item.volumeInfo?.subtitle || ''}`,
       value: String(item.id)
     }))
@@ -42,7 +42,7 @@ const handleInputChange = (event: Event) => {
     const { value } = event.target as HTMLTextAreaElement
 
     if (value) {
-      await bookStore.fetchBooks(value)
+      await bookModel.fetchBooks(value)
     }
   }, 100)
 }

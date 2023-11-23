@@ -1,14 +1,14 @@
 <template>
-  <v-container v-if="isShowFavorites">
+  <v-container v-if="isShowBookshelf">
     <v-row>
       <v-col sm="10" lg="10" offset-lg="1" offset-sm="1">
         <v-row>
           <v-col>
-            <h1 class="text-center">Избранное</h1>
+            <h1 class="text-center">Прочитанное</h1>
           </v-col>
         </v-row>
         <v-row>
-          <BookList :books="bookModel.favorites" />
+          <BookList :books="bookModel.bookshelf" />
         </v-row>
       </v-col>
     </v-row>
@@ -24,11 +24,11 @@ import { useBookModel } from '@/entities/book'
 import { EmptyText } from '@/shared/ui/empty-text'
 
 useHead({
-  title: 'Polka - Избранное'
+  title: 'Polka - Прочитанное'
 })
 
 const bookModel = useBookModel()
 
 // COMPUTED
-const isShowFavorites = computed((): boolean => bookModel.favorites.length > 0)
+const isShowBookshelf = computed((): boolean => bookModel.bookshelf.length > 0)
 </script>
