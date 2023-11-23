@@ -1,21 +1,21 @@
 <template>
-  <v-btn prepend-icon="mdi-star" :color="color" @click="bookStore.toggleFavoriteBook(book)">
+  <v-btn prepend-icon="mdi-star" :color="color" @click="bookModel.toggleFavoriteBook(book)">
     {{ text }}
   </v-btn>
 </template>
 
 <script setup lang="ts">
-import { useBookStore, type IBook } from '@/entities/book'
+import { useBookModel, type IBook } from '@/entities/book'
 
 const props = defineProps<{
   book: IBook
 }>()
-const bookStore = useBookStore()
+const bookModel = useBookModel()
 
 // COMPUTED
 const text = computed((): string =>
-  bookStore.isBookInFavorites(props.book.id) ? 'В избранном' : 'В избранное'
+  bookModel.isBookInFavorites(props.book.id) ? 'В избранном' : 'В избранное'
 )
 
-const color = computed((): string => (bookStore.isBookInFavorites(props.book.id) ? 'yellow' : ''))
+const color = computed((): string => (bookModel.isBookInFavorites(props.book.id) ? 'yellow' : ''))
 </script>

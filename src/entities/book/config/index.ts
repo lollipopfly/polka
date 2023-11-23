@@ -1,2 +1,2 @@
-export const favoritesStorageName = 'book-favorites'
-export const bookshelfStorageName = 'book-bookshelf'
+export const FAVORITES_STORAGE_NAME = 'book-favorites'
+export const BOOKSHELF_STORAGE_NAME = 'book-bookshelf'

@@ -3,20 +3,20 @@ import { books_v1 } from '@googleapis/books/v1'
 import {
   BookApi,
   toggleItemInLocalStorage,
-  favoritesStorageName,
-  bookshelfStorageName
+  FAVORITES_STORAGE_NAME,
+  BOOKSHELF_STORAGE_NAME
 } from '../index'
-import type { IBookStore, IBook } from './types'
+import type { IBookModel, IBook } from './types'
 
-export const useBookStore = defineStore({
+export const useBookModel = defineStore({
   id: 'book',
 
   state: () =>
-    <IBookStore>{
+    <IBookModel>{
       queryBooks: [],
       book: {},
-      favorites: JSON.parse(localStorage.getItem('book-favorites') || '[]'),
-      bookshelf: JSON.parse(localStorage.getItem('book-bookshelf') || '[]')
+      favorites: JSON.parse(localStorage.getItem(FAVORITES_STORAGE_NAME) || '[]'),
+      bookshelf: JSON.parse(localStorage.getItem(BOOKSHELF_STORAGE_NAME) || '[]')
     },
 
   getters: {
@@ -51,13 +51,13 @@ export const useBookStore = defineStore({
     },
 
     toggleFavoriteBook(book: IBook): void {
-      const favoriteList = toggleItemInLocalStorage(favoritesStorageName, book)
+      const favoriteList = toggleItemInLocalStorage(FAVORITES_STORAGE_NAME, book)
 
       this.updateFavorites(favoriteList)
     },
 
     toggleBookshelfBook(book: IBook): void {
-      const bookShelfList = toggleItemInLocalStorage(bookshelfStorageName, book)
+      const bookShelfList = toggleItemInLocalStorage(BOOKSHELF_STORAGE_NAME, book)
 
       this.updateBookShelf(bookShelfList)
     },

@@ -3,7 +3,7 @@
     <template v-slot:prepend>
       <v-app-bar-nav-icon
         variant="text"
-        @click.stop="themeStore.toggleIsShowNav"
+        @click.stop="themeModel.toggleIsShowNav"
       ></v-app-bar-nav-icon>
       <Logo @click="goToHome" />
     </template>
@@ -16,12 +16,12 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { useThemeStore } from '@/entities/theme'
 import { ThemeSwitcher } from '@/features/theme-switcher/'
+import { useThemeModel } from '@/entities/theme'
 import { Logo } from '@/shared/ui/logo/'
 
 const router = useRouter()
-const themeStore = useThemeStore()
+const themeModel = useThemeModel()
 
 // METHODS
 const goToHome = () => {

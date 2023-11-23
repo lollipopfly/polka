@@ -1,6 +1,12 @@
 <template>
   <v-container>
     <v-row>
+      <v-col>
+        <BackLink />
+      </v-col>
+    </v-row>
+
+    <v-row>
       <v-col sm="10" md="8" lg="6" offset-lg="3" offset-md="2" offset-sm="1">
         <v-row>
           <v-col>
@@ -11,11 +17,11 @@
         <v-row>
           <v-col cols="12" sm="5" md="3">
             <img v-if="image" :src="image" :class="css['book-details__img']" />
-            <img v-else src="@/shared/ui/assets/no-image.png" alt="No image" />
+            <img v-else :src="getEmptyImage()" alt="No image" />
           </v-col>
           <v-col>
             <div class="book-details__info">
-              <h3>{{ getAuthors(book.authors) }}</h3>
+              <h3>{{ getAuthorsWithComma(book.authors) }}</h3>
               <div v-html="book.description"></div>
             </div>
 
@@ -35,14 +41,20 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '@unhead/vue'
 import { ToggleFavoriteBook } from '@/features/book'
 import { ToggleReadBook } from '@/features/book'
+import { BackLink } from '@/shared/ui/back-link'
 import css from './css.module.css'
-import { type IBook, getAuthors } from '@/entities/book'
+import { type IBook, getAuthorsWithComma, getEmptyImage } from '@/entities/book'
 
 const props = defineProps<{
   book: IBook
 }>()
+
+useHead({
+  title: `Polka - ${props.book.title}`
+})
 
 // COMPUTED
 const image = computed((): string | undefined => props.book.image)

@@ -2,24 +2,24 @@
   <v-btn
     prepend-icon="mdi-check-decagram"
     :color="color"
-    @click="bookStore.toggleBookshelfBook(book)"
+    @click="bookModel.toggleBookshelfBook(book)"
   >
     {{ text }}
   </v-btn>
 </template>
 
 <script setup lang="ts">
-import { useBookStore, type IBook } from '@/entities/book'
+import { useBookModel, type IBook } from '@/entities/book'
 
 const props = defineProps<{
   book: IBook
 }>()
-const bookStore = useBookStore()
+const bookModel = useBookModel()
 
 // COMPUTED
 const text = computed((): string =>
-  bookStore.isBookInBookshelf(props.book.id) ? 'Прочитано' : 'Прочитать'
+  bookModel.isBookInBookshelf(props.book.id) ? 'Прочитано' : 'Прочитать'
 )
 
-const color = computed((): string => (bookStore.isBookInBookshelf(props.book.id) ? 'green' : ''))
+const color = computed((): string => (bookModel.isBookInBookshelf(props.book.id) ? 'green' : ''))
 </script>

@@ -1,3 +1,5 @@
+import { useTheme } from 'vuetify'
+import { ASSETS_PATH, THEME } from '@/shared/config'
 import type { IBook } from '../index'
 
 export const toggleItemInLocalStorage = (name: string, entity: IBook): IBook[] => {
@@ -16,5 +18,13 @@ export const toggleItemInLocalStorage = (name: string, entity: IBook): IBook[] =
   return list
 }
 
-export const getAuthors = (authors: string[] | undefined): string =>
+export const getAuthorsWithComma = (authors: string[] | undefined): string =>
   authors ? authors?.join(', ') : ''
+
+export const getEmptyImage = (): string => {
+  const myTheme = useTheme()
+
+  return myTheme.global.name.value === THEME.light
+    ? `${ASSETS_PATH}no-photo.png`
+    : `${ASSETS_PATH}no-photo-${THEME.dark}.png`
+}
