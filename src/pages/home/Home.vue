@@ -14,7 +14,7 @@ import { useBookModel } from '@/entities/book'
 import { BookSearch } from '@/features/book'
 
 useHead({
-  title: 'Polka - Поиск книги'
+  title: 'Polka - Search book'
 })
 
 const bookModel = useBookModel()

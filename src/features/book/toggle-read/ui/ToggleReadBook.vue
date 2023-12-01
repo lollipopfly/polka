@@ -1,9 +1,5 @@
 <template>
-  <v-btn
-    prepend-icon="mdi-check-decagram"
-    :color="color"
-    @click="bookModel.toggleBookshelfBook(book)"
-  >
+  <v-btn prepend-icon="mdi-bookshelf" :color="color" @click="bookModel.toggleBookshelfBook(book)">
     {{ text }}
   </v-btn>
 </template>
@@ -18,7 +14,7 @@ const bookModel = useBookModel()
 
 // COMPUTED
 const text = computed((): string =>
-  bookModel.isBookInBookshelf(props.book.id) ? 'Прочитано' : 'Прочитать'
+  bookModel.isBookInBookshelf(props.book.id) ? 'In bookshelf' : 'To bookshelf'
 )
 
 const color = computed((): string => (bookModel.isBookInBookshelf(props.book.id) ? 'green' : ''))

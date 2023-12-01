@@ -4,7 +4,7 @@
       <v-col sm="10" lg="10" offset-lg="1" offset-sm="1">
         <v-row>
           <v-col>
-            <h1 class="text-center">Прочитанное</h1>
+            <h1 class="text-center">Bookshelf</h1>
           </v-col>
         </v-row>
         <v-row>
@@ -24,7 +24,7 @@ import { useBookModel } from '@/entities/book'
 import { EmptyText } from '@/shared/ui/empty-text'
 
 useHead({
-  title: 'Polka - Прочитанное'
+  title: 'Polka - Bookshelf'
 })
 
 const bookModel = useBookModel()

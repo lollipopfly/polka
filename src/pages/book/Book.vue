@@ -1,6 +1,6 @@
 <template>
   <BookDetails v-if="isShowBookDetails" :book="bookModel.book" />
-  <div v-if="isShowNoBookMessage" class="text-center mt-10">Книга не найдена</div>
+  <div v-if="isShowNoBookMessage" class="text-center mt-10">The book not found</div>
 </template>
 
 <script setup lang="ts">
