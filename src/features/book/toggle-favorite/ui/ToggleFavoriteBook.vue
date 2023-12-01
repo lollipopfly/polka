@@ -14,7 +14,7 @@ const bookModel = useBookModel()
 
 // COMPUTED
 const text = computed((): string =>
-  bookModel.isBookInFavorites(props.book.id) ? 'В избранном' : 'В избранное'
+  bookModel.isBookInFavorites(props.book.id) ? 'In favorites' : 'To favorites'
 )
 
 const color = computed((): string => (bookModel.isBookInFavorites(props.book.id) ? 'yellow' : ''))

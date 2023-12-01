@@ -21,19 +21,19 @@ const themeModel = useThemeModel()
 
 const items = reactive([
   {
-    title: 'Главная',
+    title: 'Home',
     to: '/',
     icon: 'home'
   },
   {
-    title: 'Избранное',
+    title: 'Favorites',
     to: '/favorites',
     icon: 'star'
   },
   {
-    title: 'Прочитано',
+    title: 'Bookshelf',
     to: '/bookshelf',
-    icon: 'check-decagram'
+    icon: 'bookshelf'
   }
 ])
 </script>

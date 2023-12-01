@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
 
-const title = computed((): string => '404 - страница не найдена')
+const title = computed((): string => '404 - page not found')
 
 useHead({
   title: title.value
