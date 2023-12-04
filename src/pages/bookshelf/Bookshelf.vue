@@ -29,6 +29,5 @@ useHead({
 
 const bookModel = useBookModel()
 
-// COMPUTED
 const isShowBookshelf = computed((): boolean => bookModel.bookshelf.length > 0)
 </script>

@@ -22,12 +22,10 @@ onBeforeUnmount(() => {
   bookModel.$reset()
 })
 
-// COMPUTED
 const isShowBookDetails = computed(
   (): boolean => Object.keys(bookModel.book as books_v1.Schema$Volume).length > 0
 )
 
-// METHODS
 const getBook = async () => {
   const { id } = route.params
 

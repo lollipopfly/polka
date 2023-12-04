@@ -23,7 +23,6 @@ import { Logo } from '@/shared/ui/logo/'
 const router = useRouter()
 const themeModel = useThemeModel()
 
-// METHODS
 const goToHome = () => {
   router.push({ path: '/' })
 }

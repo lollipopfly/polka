@@ -12,7 +12,6 @@ const props = defineProps<{
 }>()
 const bookModel = useBookModel()
 
-// COMPUTED
 const text = computed((): string =>
   bookModel.isBookInFavorites(props.book.id) ? 'In favorites' : 'To favorites'
 )

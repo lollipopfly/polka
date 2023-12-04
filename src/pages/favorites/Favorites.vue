@@ -29,6 +29,5 @@ useHead({
 
 const bookModel = useBookModel()
 
-// COMPUTED
 const isShowFavorites = computed((): boolean => bookModel.favorites.length > 0)
 </script>
