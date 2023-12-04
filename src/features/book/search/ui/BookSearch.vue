@@ -27,7 +27,6 @@ const bookModel = useBookModel()
 
 const query = ref('')
 
-// COMPUTED
 const items = computed(
   (): AutocompleteOption[] =>
     bookModel.queryBooks?.map((item: books_v1.Schema$Volume) => ({
@@ -36,7 +35,6 @@ const items = computed(
     }))
 )
 
-// METHODS
 const handleInputChange = (event: Event) => {
   debounce(async function () {
     const { value } = event.target as HTMLTextAreaElement

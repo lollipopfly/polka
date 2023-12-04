@@ -18,6 +18,5 @@ import { THEME } from '@/shared/config'
 
 const myTheme = useTheme()
 
-// COMPUTED
 const currentTheme = computed((): any => myTheme.global.name.value)
 </script>

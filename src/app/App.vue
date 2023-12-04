@@ -8,7 +8,6 @@ import { DefaultLayout } from '@/widgets/default-layout/'
 
 const route = useRoute()
 
-// COMPUTED
 const layout = computed(() => route.meta.layout || DefaultLayout)
 </script>
 

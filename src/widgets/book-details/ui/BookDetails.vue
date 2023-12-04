@@ -56,7 +56,6 @@ useHead({
   title: `Polka - ${props.book.title}`
 })
 
-// COMPUTED
 const image = computed((): string | undefined => props.book.image)
 
 const isShowBtn = computed((): boolean => Object.keys(props.book).length > 0)
