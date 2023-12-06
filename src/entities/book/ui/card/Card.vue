@@ -1,5 +1,5 @@
 <template>
-  <v-card link :href="href" :class="styles.card">
+  <v-card :to="href" :class="styles.card">
     <div :class="styles.top">
       <v-icon icon="mdi-star" :class="styles.icon" color="yellow-darken-2" />
       <v-img v-if="image" :src="image" :class="styles.image" cover />
