@@ -1,9 +1,9 @@
 <template>
-  <v-card link :href="href" :class="css.card">
-    <div :class="css['card__top']">
-      <v-icon icon="mdi-star" :class="css['card__icon']" color="yellow-darken-2" />
-      <v-img v-if="image" :src="image" :class="css['card__img']" cover />
-      <v-img v-else :src="getEmptyImage()" :class="css['card__img']" alt="No image" cover />
+  <v-card link :href="href" :class="styles.card">
+    <div :class="styles.top">
+      <v-icon icon="mdi-star" :class="styles.icon" color="yellow-darken-2" />
+      <v-img v-if="image" :src="image" :class="styles.image" cover />
+      <v-img v-else :src="getEmptyImage()" :class="styles.image" alt="No image" cover />
     </div>
 
     <v-card-title>{{ data.title }}</v-card-title>
@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { type IBook, getAuthorsWithComma, getEmptyImage } from '@/entities/book'
-import css from './css.module.css'
+import styles from './styles.module.css'
 
 const props = defineProps<{
   data: IBook

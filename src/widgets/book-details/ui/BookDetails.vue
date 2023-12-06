@@ -16,11 +16,11 @@
 
         <v-row>
           <v-col cols="12" sm="5" md="3">
-            <img v-if="image" :src="image" :class="css['book-details__img']" />
+            <img v-if="image" :src="image" :class="styles.image" />
             <img v-else :src="getEmptyImage()" alt="No image" />
           </v-col>
           <v-col>
-            <div class="book-details__info">
+            <div :class="styles.info">
               <h3>{{ getAuthorsWithComma(book.authors) }}</h3>
               <div v-html="book.description"></div>
             </div>
@@ -45,7 +45,7 @@ import { useHead } from '@unhead/vue'
 import { ToggleFavoriteBook } from '@/features/book'
 import { ToggleReadBook } from '@/features/book'
 import { BackLink } from '@/shared/ui/back-link'
-import css from './css.module.css'
+import styles from './styles.module.css'
 import { type IBook, getAuthorsWithComma, getEmptyImage } from '@/entities/book'
 
 const props = defineProps<{
