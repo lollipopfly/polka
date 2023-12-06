@@ -1,5 +1,5 @@
 <template>
-  <v-layout :class="[css['home-layout'], 'rounded', 'rounded-md']" ref="app">
+  <v-layout :class="[styles.layout, 'rounded', 'rounded-md']" ref="app">
     <Header />
 
     <Navigation />
@@ -16,5 +16,5 @@
 import { Header } from '@/widgets/header'
 import { Navigation } from '@/widgets/navigation'
 import { Footer } from '@/shared/ui/footer'
-import css from './css.module.css'
+import styles from './styles.module.css'
 </script>

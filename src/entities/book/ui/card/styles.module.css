@@ -1,17 +1,17 @@
 .card {
   height: 300px;
 }
-.card__top {
+.top {
   position: relative;
 }
 
-.card__icon {
+.icon {
   position: absolute;
   top: 5px;
   right: 5px;
   z-index: 1;
 }
 
-.card__img {
+.image {
   height: 200px;
 }

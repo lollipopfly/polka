@@ -1,7 +1,7 @@
 <template>
-  <div :class="[css['empty-text'], 'text-center']">📚 Oops! It's still empty here.</div>
+  <div :class="[styles.text, 'text-center']">📚 Oops! It's still empty here.</div>
 </template>
 
 <script setup lang="ts">
-import css from './css.module.css'
+import styles from './styles.module.css'
 </script>
