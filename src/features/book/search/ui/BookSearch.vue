@@ -45,7 +45,9 @@ const handleInputChange = (event: Event) => {
   }, 100)
 }
 
-const handleOptionChoose = (id: string) => {
-  router.push({ name: 'Book', params: { id } })
+const handleOptionChoose = (id: string | null) => {
+  if (id !== null) {
+    router.push({ name: 'Book', params: { id } })
+  }
 }
 </script>
