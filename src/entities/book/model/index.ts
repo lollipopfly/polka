@@ -35,7 +35,9 @@ export const useBookModel = defineStore({
     async fetchBooks(payload: string): Promise<void> {
       const { items } = await BookApi.fetchBooks(payload)
 
-      this.updateQueryBooks(items)
+      if (items) {
+        this.updateQueryBooks(items)
+      }
     },
 
     async fetchBookById(id: string): Promise<any> {
