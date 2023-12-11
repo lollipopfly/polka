@@ -1,3 +1,3 @@
-import BookPage from './Book.vue'
+import BookPage from './ui/Book.vue'
 
 export default BookPage

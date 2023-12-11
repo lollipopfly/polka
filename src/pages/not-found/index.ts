@@ -1,3 +1,3 @@
-import NotFound from './NotFound.vue'
+import NotFound from './ui/NotFound.vue'
 
 export default NotFound
