@@ -1,3 +1,3 @@
-import HomePage from './Home.vue'
+import HomePage from './ui/Home.vue'
 
 export default HomePage
