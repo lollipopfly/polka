@@ -1,4 +1,4 @@
-import { HomeLayout } from '@/widgets/home-layout/'
+import { HomeLayout } from '@/shared/ui/layouts'
 
 export const routes = [
   {
